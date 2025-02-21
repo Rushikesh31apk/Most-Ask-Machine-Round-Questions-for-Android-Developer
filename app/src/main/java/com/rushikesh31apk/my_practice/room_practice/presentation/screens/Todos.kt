@@ -46,9 +46,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.rushikesh31apk.my_practice.AppNavigation.BottomNavigationBar
+import com.rushikesh31apk.my_practice.AppNavigation.Bottombar
 import com.rushikesh31apk.my_practice.room_practice.data.model.Todo
 import com.rushikesh31apk.my_practice.room_practice.presentation.TodoViewModel
-import com.rushikesh31apk.my_practice.room_practice.presentation.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -56,6 +57,8 @@ import com.rushikesh31apk.my_practice.room_practice.presentation.navigation.Scre
 fun Todos(viewModel: TodoViewModel = viewModel(), navController: NavHostController) {
 
     val alltodos by viewModel.todos.collectAsState()
+    var selectedIndex by remember { mutableStateOf(0) }
+
     var selectedTodo by remember { mutableStateOf<Todo?>(null) }  // Holds the selected todo for editing
 
     Scaffold(
@@ -63,21 +66,28 @@ fun Todos(viewModel: TodoViewModel = viewModel(), navController: NavHostControll
             TopAppBar(
                 title = {
                     Text(
-                        text = "All Todos",
+                        text = "All Todos (Room Database)",
                         fontSize = 26.sp,
                         fontWeight = FontWeight.Bold,
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth()
                     )
                 }
             )
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { navController.navigate(Screen.AddScreen.route) },
+                onClick = { navController.navigate(Bottombar.AddTodoScreen.route) },
                 containerColor = Color(0xFF6200EA)
             ) {
                 Icon(Icons.Default.Add, contentDescription = "Add Todo", tint = Color.White)
             }
+        },
+        bottomBar = {
+            BottomNavigationBar(
+                navController = navController,
+                selectedIndex = selectedIndex,
+                onItemSelected = { selectedIndex = it }
+            )
         }
     ) { paddingValues ->
         Box(
@@ -165,7 +175,10 @@ fun Todos(viewModel: TodoViewModel = viewModel(), navController: NavHostControll
                     )
                 }
             }
+
+
         }
+
     }
 
     // todo Show edit dialog when a todo is selected

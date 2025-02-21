@@ -13,9 +13,9 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.rushikesh31apk.my_practice.AppNavigation.Bottombar
 import com.rushikesh31apk.my_practice.room_practice.data.model.Todo
 import com.rushikesh31apk.my_practice.room_practice.presentation.TodoViewModel
-import com.rushikesh31apk.my_practice.room_practice.presentation.navigation.Screen
 
 @Composable
 fun AddTodo(viewModel: TodoViewModel = viewModel(), navController: NavController) {
@@ -42,7 +42,7 @@ fun AddTodo(viewModel: TodoViewModel = viewModel(), navController: NavController
                     .size(25.dp)
                     .clickable {
                         navController.navigate(
-                            Screen.HomeScreen.route
+                            Bottombar.TodosScreen.route
                         )
                     })
 

@@ -14,8 +14,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.unit.dp
-import com.rushikesh31apk.my_practice.room_practice.presentation.navigation.AppNavigation
-import com.rushikesh31apk.my_practice.room_practice.presentation.screens.Todos
+import androidx.navigation.compose.rememberNavController
+import com.rushikesh31apk.my_practice.AppNavigation.AppNavHost
 
 
 class MainActivity : ComponentActivity() {
@@ -24,15 +24,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val navController = rememberNavController()
             My_practiceTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) {
-                    MarsUiScreen()
-                    //TestImage()
-                    //RegisterScreen()
-                    AppNavigation()
-//                    Box(modifier = Modifier.padding(it)){
-//
-//                    }
+                    AppNavHost(navController)
                 }
             }
         }

@@ -11,7 +11,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
@@ -20,13 +19,16 @@ import androidx.compose.ui.text.input.*
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.rushikesh31apk.my_practice.AppNavigation.BottomNavigationBar
 import kotlinx.coroutines.launch
 import java.util.Calendar
 
-@Preview(showBackground = true, showSystemUi = true)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(navController: NavHostController) {
+
+
 
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
@@ -48,6 +50,8 @@ fun RegisterScreen() {
     var dobError by remember { mutableStateOf<String?>(null) }
     var stateError by remember { mutableStateOf<String?>(null) }
 
+    var selectedIndex by remember { mutableStateOf(3) }
+
     val statesList = listOf("Maharashtra", "Karnataka", "Gujarat", "Delhi", "Tamil Nadu")
 
     Scaffold(
@@ -63,7 +67,15 @@ fun RegisterScreen() {
                 )
             }
             )
+        },
+        bottomBar = {
+            BottomNavigationBar(
+                navController = navController,
+                selectedIndex = selectedIndex,
+                onItemSelected = { selectedIndex = it }
+            )
         }
+
     ) { paddingValues ->
         LazyColumn(
             modifier = Modifier
@@ -192,6 +204,7 @@ fun DatePickerField(
     Column {
         OutlinedTextField(
             value = value,
+
             onValueChange = {onValueChange(it)},
             label = { Text(label) },
             modifier = Modifier
