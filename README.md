@@ -43,6 +43,6 @@ This repository provides practical implementations of commonly asked machine rou
 
 1️⃣ **Clone the Repository**
 ```bash
-git clone https://github.com/your-username/Most-Ask-Machine-Round-Questions-for-Android-Developer.git
+git clone https://github.com/Rushikesh31apk/Most-Ask-Machine-Round-Questions-for-Android-Developer/tree/main
 cd Most-Ask-Machine-Round-Questions-for-Android-Developer
 ```
