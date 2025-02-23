@@ -4,7 +4,7 @@ This repository provides practical implementations of commonly asked machine rou
 
 ## 📌 Features Implemented
 
-### 1️⃣ API Integration (Retrofit + Coroutines)
+### 1️⃣ API Integration (Retrofit + Coroutines + Paginatination)
 - Fetch and display data from a REST API.
 - Uses **Retrofit** for network requests.
 - **Coroutines & Flow** for async operations.
