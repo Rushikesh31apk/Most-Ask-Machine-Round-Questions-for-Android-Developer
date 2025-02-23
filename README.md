@@ -33,7 +33,7 @@ This repository provides practical implementations of commonly asked machine rou
 - **Kotlin** (Jetpack Compose, Coroutines)
 - **Retrofit** (API Calls)
 - **Room Database** (Local Storage)
-- **ViewModel + LiveData** (State Management)
+- **ViewModel** (State Management)
 - **SharedPreferences** (Data Persistence)
 - **Jetpack Compose** (Modern UI)
 
